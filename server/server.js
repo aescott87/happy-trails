@@ -1,12 +1,16 @@
 
 const express = require('express');
-require('dotenv').config();
 
 const app = express();
 const bodyParser = require('body-parser');
 const sessionMiddleware = require('./modules/session-middleware');
 
 const passport = require('./strategies/user.strategy');
+
+// import API Key from .env
+const dotenv = require('dotenv');
+dotenv.config();
+console.log('API Key', process.env.GIPHY_API_KEY);
 
 // Route includes
 const userRouter = require('./routes/user.router');
