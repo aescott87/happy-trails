@@ -4,15 +4,30 @@ import { connect } from 'react-redux';
 
 class HomePage extends Component {
 
+  state = {
+    trailNameQuery: ''
+  }
 
+  handleChange = (event) => {
+    this.setState({
+      trailNameQuery: event.target.value
+    });
+  }
+
+  handleTrailSearch = (event) => {
+    event.preventDefault();
+    console.log('In handle search', this.state.trailNameQuery);
+    this.props.dispatch({ type: 'SEARCH_TRAIL', payload: this.state.trailNameQuery})
+  }
 
   render() {
     return (
       <div>
         <h1>Let's Start Hiking!</h1>
-        <form>
+        <form onSubmit={(event) => this.handleTrailSearch(event)}>
           <legend>Search by Park Name:</legend>
-          <input placeholder="Name"/>
+          <input placeholder="Name" onChange={(event) => this.handleChange(event)}/>
+          <button>Search</button>
         </form>
       </div>
     )

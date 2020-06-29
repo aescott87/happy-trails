@@ -10,10 +10,11 @@ const passport = require('./strategies/user.strategy');
 // import API Key from .env
 const dotenv = require('dotenv');
 dotenv.config();
-console.log('API Key', process.env.GIPHY_API_KEY);
+console.log('API Key', process.env.RIDB_API_KEY);
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const trailRouter = require('./routes/trail.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -28,6 +29,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/api/trail', trailRouter);
 
 // Serve static files
 app.use(express.static('build'));
