@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class SearchResultsPage extends Component {
+
+  state = {
+    savedTrail: false
+  }
+
   render() {
     return (
       <>
@@ -12,8 +17,10 @@ class SearchResultsPage extends Component {
               {this.props.trailList.map((trail) => {
                 return (
                   <>
-                    <p><b>Trail Name:</b> {trail.RecAreaName}</p>
-                    <p><b>About:</b> {trail.RecAreaDescription}</p>
+                    <p><b>Trail Name:</b> {trail.FacilityName}</p>
+                    <p><b>About:</b> {trail.FacilityDescription}</p>
+                    <p><b>How to Get There:</b> {trail.FacilityDirections}</p>
+                    <p>Add to Saved Trails:</p><input type="checkbox"></input>
                   </>
                 )
               })}

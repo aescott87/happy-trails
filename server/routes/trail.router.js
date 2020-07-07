@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
             accept: "application/json"
         }
     }
-    axios.get(`https://ridb.recreation.gov/api/v1/recareas?query=${req.query.q}&limit=15&offset=0&state=MN&activity=HIKING&radius=10`, config)
+    axios.get(`https://ridb.recreation.gov/api/v1/facilities?query=${req.query.q}&limit=15&offset=0&full=false&state=MN&radius=20&activity=14,100066,100076&sort=name`, config)
         .then(response => {
             res.send(response.data);
         })
