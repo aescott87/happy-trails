@@ -18,6 +18,7 @@ class HomePage extends Component {
     event.preventDefault();
     console.log('In handle search', this.state.trailNameQuery);
     this.props.dispatch({ type: 'SEARCH_TRAIL', payload: this.state.trailNameQuery})
+    this.props.history.push('/searchresults');
   }
 
   render() {

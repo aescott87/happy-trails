@@ -17,9 +17,7 @@ router.get('/', (req, res) => {
     }
     axios.get(`https://ridb.recreation.gov/api/v1/recareas?query=${req.query.q}&limit=15&offset=0&state=MN&activity=HIKING&radius=10`, config)
         .then(response => {
-            console.log(response.data);
             res.send(response.data);
-
         })
         .catch(error => {
             console.log('error on get', error);

@@ -7,7 +7,7 @@ function* searchTrailName( action ) {
         //response holds the search results we got from the server
         const response = yield axios.get(`/api/trail`, { params: {q: action.payload} });
         console.log('Response coming from server', response.data)
-        //yield put({type: 'LIST_TRAIL', payload: response.data })
+        yield put({type: 'SEARCH_RESULT', payload: response.data })
     }
     catch(error){
         console.log('error in search trail', error);
