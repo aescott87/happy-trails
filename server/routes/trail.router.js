@@ -4,18 +4,17 @@ const axios = require('axios');
 const { json } = require('express');
 const router = express.Router();
 
+// import API Key from .env
+const dotenv = require('dotenv');
+dotenv.config();
+console.log('API Key', process.env.GOOGLE_API_KEY);
+
 /**
  * GET route template
  */
 router.get('/', (req, res) => {
-    console.log('search query is', req.query);
-    let config = {
-        headers: {
-            apikey: "68b18cb0-84ef-458d-b149-41eebe912d2c",
-            accept: "application/json"
-        }
-    }
-    axios.get(`https://ridb.recreation.gov/api/v1/facilities?query=${req.query.q}&limit=15&offset=0&full=false&state=MN&radius=20&activity=14,100066,100076&sort=name`, config)
+    console.log('search query is', req.query.q);
+    axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${req.query.q}&inputtype=textquery&fields=photos,formatted_address,name,icon&key=${process.env.GOOGLE_API_KEY}`)
         .then(response => {
             res.send(response.data);
         })

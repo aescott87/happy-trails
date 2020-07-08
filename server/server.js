@@ -7,10 +7,6 @@ const sessionMiddleware = require('./modules/session-middleware');
 
 const passport = require('./strategies/user.strategy');
 
-// import API Key from .env
-const dotenv = require('dotenv');
-dotenv.config();
-console.log('API Key', process.env.RIDB_API_KEY);
 
 // Route includes
 const userRouter = require('./routes/user.router');
