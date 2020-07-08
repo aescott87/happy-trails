@@ -12,15 +12,14 @@ class SearchResultsPage extends Component {
       <>
         <div>
           <h2>Search Results</h2>
-          {this.props.trailList ?
+          {this.props.searchList ?
             <>
-              {this.props.trailList.map((trail) => {
+              {this.props.searchList.map((trail) => {
                 return (
                   <>
-                    <p><b>Trail Name:</b> {trail.FacilityName}</p>
-                    <p><b>About:</b> {trail.FacilityDescription}</p>
-                    <p><b>How to Get There:</b> {trail.FacilityDirections}</p>
-                    <p>Add to Saved Trails:</p><input type="checkbox"></input>
+                    {/*<img src={trail.icon} alt="img" />*/}
+                    <p><b>Trail Name:</b> {trail.name}</p>
+                    <p><b>Location:</b> {trail.formatted_address}</p>
                   </>
                 )
               })}
@@ -32,7 +31,7 @@ class SearchResultsPage extends Component {
 }
 
 const mapStateToProps = (reduxStore) => ({
-  trailList: reduxStore.searchResult.searchResult.RECDATA,
+  searchList: reduxStore.searchResult.searchResult.candidates,
 });
 
 export default connect(mapStateToProps)(SearchResultsPage);
