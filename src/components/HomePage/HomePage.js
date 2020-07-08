@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class HomePage extends Component {
 
   state = {
-    trailNameQuery: ''
+    trailNameQuery: 'Hiking trails in '
   }
 
   handleChange = (event) => {
@@ -26,8 +26,8 @@ class HomePage extends Component {
       <div>
         <h1>Let's Start Hiking!</h1>
         <form onSubmit={(event) => this.handleTrailSearch(event)}>
-          <legend>Search by Park Name:</legend>
-          <input placeholder="Name" onChange={(event) => this.handleChange(event)}/>
+          <legend>Where Do You Want to Explore?</legend>
+          <input value={this.state.trailNameQuery} onChange={(event) => this.handleChange(event)}/>
           <button>Search</button>
         </form>
       </div>

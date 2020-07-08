@@ -17,9 +17,18 @@ class SearchResultsPage extends Component {
               {this.props.searchList.map((trail) => {
                 return (
                   <>
-                    {/*<img src={trail.icon} alt="img" />*/}
-                    <p><b>Trail Name:</b> {trail.name}</p>
+                    {trail.photos ?
+                      <>
+                        {trail.photos.map((photo) => {
+                          return (
+                            <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photo.photo_reference}&key=AIzaSyB08HpDq5YU_mltlcG_U3WJdUaELaLcezY`} alt="img" />
+                          )
+                        })}
+                      </> : null
+                    }
+                    <p><b>Name:</b> {trail.name}</p>
                     <p><b>Location:</b> {trail.formatted_address}</p>
+                    <p><b>Average Rating:</b> {trail.rating}</p>
                   </>
                 )
               })}
@@ -31,7 +40,7 @@ class SearchResultsPage extends Component {
 }
 
 const mapStateToProps = (reduxStore) => ({
-  searchList: reduxStore.searchResult.searchResult.candidates,
+  searchList: reduxStore.searchResult.searchResult.results,
 });
 
 export default connect(mapStateToProps)(SearchResultsPage);

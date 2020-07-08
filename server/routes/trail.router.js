@@ -14,8 +14,9 @@ console.log('API Key', process.env.GOOGLE_API_KEY);
  */
 router.get('/', (req, res) => {
     console.log('search query is', req.query.q);
-    axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${req.query.q}&inputtype=textquery&fields=photos,formatted_address,name,icon&key=${process.env.GOOGLE_API_KEY}`)
+    axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?input=${req.query.q}&type=park&key=${process.env.GOOGLE_API_KEY}`)
         .then(response => {
+            
             res.send(response.data);
         })
         .catch(error => {
