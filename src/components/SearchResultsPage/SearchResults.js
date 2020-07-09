@@ -7,6 +7,18 @@ class SearchResultsPage extends Component {
     savedTrail: false
   }
 
+  handleSaveTrail = () => {
+    console.log('in handleSaveTrail')
+    this.setState({
+      savedTrail: !this.state.savedTrail
+    })
+  }
+
+  addSavedTrail = (id) => {
+    console.log('in addSavedTrail, place id is', id)
+    //this.props.dispatch({ type: 'ADD_SAVED_TRAIL' payload: id })
+  }
+
   render() {
     return (
       <>
@@ -29,6 +41,8 @@ class SearchResultsPage extends Component {
                     <p><b>Name:</b> {trail.name}</p>
                     <p><b>Location:</b> {trail.formatted_address}</p>
                     <p><b>Average Rating:</b> {trail.rating}</p>
+                    <input type="checkbox" value={this.state.savedTrail} label="Save This Trail" onChange={this.handleSaveTrail}></input>
+                    <button onClick={this.addSavedTrail(trail.place_id)}>Add to Saved Trails</button>
                   </>
                 )
               })}
@@ -41,6 +55,7 @@ class SearchResultsPage extends Component {
 
 const mapStateToProps = (reduxStore) => ({
   searchList: reduxStore.searchResult.searchResult.results,
+  user: reduxStore.user
 });
 
 export default connect(mapStateToProps)(SearchResultsPage);
