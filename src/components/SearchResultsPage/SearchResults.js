@@ -3,20 +3,9 @@ import { connect } from 'react-redux';
 
 class SearchResultsPage extends Component {
 
-  state = {
-    savedTrail: false
-  }
-
-  handleSaveTrail = () => {
-    console.log('in handleSaveTrail')
-    this.setState({
-      savedTrail: !this.state.savedTrail
-    })
-  }
-
   addSavedTrail = (id) => {
     console.log('in addSavedTrail, place id is', id)
-    //this.props.dispatch({ type: 'ADD_SAVED_TRAIL' payload: id })
+    this.props.dispatch({ type: 'ADD_SAVED_TRAIL', payload: id })
   }
 
   render() {
@@ -41,8 +30,7 @@ class SearchResultsPage extends Component {
                     <p><b>Name:</b> {trail.name}</p>
                     <p><b>Location:</b> {trail.formatted_address}</p>
                     <p><b>Average Rating:</b> {trail.rating}</p>
-                    <input type="checkbox" value={this.state.savedTrail} label="Save This Trail" onChange={this.handleSaveTrail}></input>
-                    <button onClick={this.addSavedTrail(trail.place_id)}>Add to Saved Trails</button>
+                    <button onClick={() => this.addSavedTrail(trail.place_id)}>Add to Saved Trails</button>
                   </>
                 )
               })}
