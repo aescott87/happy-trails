@@ -1,16 +1,22 @@
-import React from 'react';
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+class SavedTrails extends Component {
 
-const InfoPage = () => (
-  <div>
-    <p>
-      Info Page
-    </p>
-  </div>
-);
+  componentDidMount() {
+    this.props.dispatch({ type: 'GET_SAVED_TRAIL' });
+  }
 
-export default InfoPage;
+  render() {
+    return(
+      <h2>Your Saved Trails</h2>
+
+    )
+  }
+}
+
+const mapStateToProps = (reduxStore) => ({
+  user: reduxStore.user,
+});
+
+export default connect(mapStateToProps)(SavedTrails);
