@@ -6,7 +6,7 @@ function* getSavedTrail() {
     try { 
         const response = yield axios.get(`/api/savedTrail`);
         console.log('Getting response from server', response.data)
-        //yield put({type: 'SEARCH_RESULT', payload: response.data })
+        yield put({type: 'SAVED_TRAIL', payload: response.data })
     }
     catch(error){
         console.log('error in adding saved trail', error);
