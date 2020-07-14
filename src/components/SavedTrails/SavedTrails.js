@@ -23,8 +23,13 @@ class SavedTrails extends Component {
 
   updateNotes = (event, id) => {
     event.preventDefault();
-    console.log('in updateNotes');
     this.props.dispatch({ type: 'UPDATE_NOTES', payload: {id, notes: this.state.trailNotes} })
+    this.getSavedTrails();
+  }
+
+  deleteTrail = (id) => {
+    console.log('in deleteTrail');
+    this.props.dispatch({type: 'DELETE_TRAIL', payload: id})
     this.getSavedTrails();
   }
 
@@ -40,6 +45,7 @@ class SavedTrails extends Component {
                   <p><b>Name:</b> {trail.name}</p>
                   <p><b>Location:</b> {trail.formatted_address}</p>
                   <p><b>Average Rating:</b> {trail.rating}</p>
+                  <button onClick={(event) => this.deleteTrail(trail.place_id)}>Remove this Trail</button>
                   <form onSubmit={(event) => this.updateNotes(event, trail.place_id)}>
                   <textarea 
                     rows='6' 

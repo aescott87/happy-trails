@@ -56,4 +56,18 @@ router.put('/', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res) => {
+    const placeId = req.params.id;
+    const user = req.user.id;
+    pool.query(`DELETE FROM "saved_trail" WHERE "place_id" = $1 AND "user_id" = $2;`, [placeId, user])
+    .then((response) => {
+        console.log('Trail deleted successfully!');
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log('Error deleting trail', error);
+        res.sendStatus(500);
+    })
+})
+
 module.exports = router;
