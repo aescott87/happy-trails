@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 
@@ -17,20 +17,29 @@ class HomePage extends Component {
   handleTrailSearch = (event) => {
     event.preventDefault();
     console.log('In handle search', this.state.trailNameQuery);
-    this.props.dispatch({ type: 'SEARCH_TRAIL', payload: this.state.trailNameQuery})
+    this.props.dispatch({ type: 'SEARCH_TRAIL', payload: this.state.trailNameQuery })
     this.props.history.push('/searchresults');
   }
 
   render() {
     return (
-      <div>
-        <h1>Let's Start Hiking!</h1>
-        <form onSubmit={(event) => this.handleTrailSearch(event)}>
-          <legend>Where Do You Want to Explore?</legend>
-          <input value={this.state.trailNameQuery} onChange={(event) => this.handleChange(event)}/>
-          <button>Search</button>
-        </form>
-      </div>
+      <>
+        <section class="hero is-primary is-fullheight is-bold">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">Welcome to Happy Trails</h1>
+              <h2 class="subtitle">Let's Explore</h2>
+            </div>
+            <div class="field">
+              <label class="label">I'm looking for...</label>
+              <div class="control">
+                <input class="input is-info" type="text" value={this.state.trailNameQuery} onChange={(event) => this.handleChange(event)} />
+                <button onClick={(event) => this.handleTrailSearch(event)} class="button is-primary is-inverted">Search</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </>
     )
   }
 }
