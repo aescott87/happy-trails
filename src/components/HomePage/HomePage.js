@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './HomePage.css';
 
 
 class HomePage extends Component {
@@ -34,7 +35,7 @@ class HomePage extends Component {
               <label class="label">I'm looking for...</label>
               <div class="control">
                 <input class="input is-info" type="text" value={this.state.trailNameQuery} onChange={(event) => this.handleChange(event)} />
-                <button onClick={(event) => this.handleTrailSearch(event)} class="button is-primary is-inverted">Search</button>
+                <button onClick={(event) => this.handleTrailSearch(event)} class="button is-info is-inverted">Search</button>
               </div>
             </div>
           </div>
