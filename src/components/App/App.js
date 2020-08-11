@@ -12,8 +12,6 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-
-import SearchResultsPage from '../SearchResultsPage/SearchResults';
 import HomePage from '../HomePage/HomePage';
 import SavedTrails from '../SavedTrails/SavedTrails';
 
@@ -47,11 +45,6 @@ class App extends Component {
               exact
               path="/savedtrails"
               component={SavedTrails}
-            />
-            <ProtectedRoute
-              exact
-              path="/searchresults"
-              component={SearchResultsPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

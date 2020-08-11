@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HomePage.css';
+import SearchResults from '../SearchResults/SearchResults';
 
 
 class HomePage extends Component {
@@ -19,13 +20,12 @@ class HomePage extends Component {
     event.preventDefault();
     console.log('In handle search', this.state.trailNameQuery);
     this.props.dispatch({ type: 'SEARCH_TRAIL', payload: this.state.trailNameQuery })
-    this.props.history.push('/searchresults');
   }
 
   render() {
     return (
       <>
-        <section class="hero is-primary is-fullheight is-bold">
+        <section class="hero is-primary is-medium is-bold">
           <div class="hero-body">
             <div class="container">
               <h1 class="title">Welcome to Happy Trails</h1>
@@ -40,6 +40,7 @@ class HomePage extends Component {
             </div>
           </div>
         </section>
+        <SearchResults />
       </>
     )
   }
