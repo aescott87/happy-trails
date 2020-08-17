@@ -45,7 +45,7 @@ class SavedTrails extends Component {
                   <p><b>Name:</b> {trail.name}</p>
                   <p><b>Location:</b> {trail.formatted_address}</p>
                   <p><b>Average Rating:</b> {trail.rating}</p>
-                  <button onClick={(event) => this.deleteTrail(trail.place_id)}>Remove this Trail</button>
+                  <p><b>Trail Notes:</b></p>
                   <form onSubmit={(event) => this.updateNotes(event, trail.place_id)}>
                   <textarea 
                     rows='6' 
@@ -55,6 +55,7 @@ class SavedTrails extends Component {
                     />
                   <button type='submit'>Update Notes</button>
                   </form>
+                  <button onClick={(event) => this.deleteTrail(trail.place_id)}>Remove this Trail</button>
                 </>
               )
             })}

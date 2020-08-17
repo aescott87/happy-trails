@@ -23,9 +23,6 @@ const Nav = (props) => (
             Saved Trails
           </Link>
           <LogOutButton className="nav-link" />
-          <Link className="nav-link" to="/about">
-            Favorites
-          </Link>
         </>
       )}
     </div>

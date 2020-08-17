@@ -1,4 +1,12 @@
 .card {
-    width: 30%;
-    height: 75%;
+    display: inline;
+    width: 75%;
+    height: auto;
+    margin: 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-left: 75px;
 }
